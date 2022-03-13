@@ -53,3 +53,56 @@ aw1-labs-404-name-not-found
 |--- Readme.md  
 |--- ...
 </pre>
+
+## Salvare e caricare il lavoro 💾
+
+Una volta aggiunto il codice ad un branch noterete che da VS Code viene evidenziato e marchiato con una "**U**", che sta per *Untracked*,
+se invece il file era stato già creato e salvato nella repository modificarlo farà si che venga marchiato come "**M**", ovvero *Modified*.
+
+Quando vogliamo salvare il lavoro fatto sulla repository per sincronizzarlo con gli altri, le operazioni da fare sono 3.
+
+1. Aggiungere i file che vogliamo salvare.  
+Nel caso più semplice in cui vogliamo salvare tutti i file il comando è
+```bash
+git add --all
+```
+
+2. *Committare*, ovvero persistere il salvataggio. Questa operazione nel nostro caso può sembrare scema e bypassabile, ma è in generale molto utile.
+In generale per committare si può eseguire il comando
+```bash
+git commit -m "UN MESSAGGIO BREVE E DESCRITTIVO"
+```
+
+3. Caricare i file sulla repository github.
+Fin qui avete persistito i cambiamenti solo in locale, per condividerli con gli altri è necessario un ultimo step, ovvero lanciare il comando:
+```bash
+git push
+```
+Al primo caricamento sarà necessario impostare anche il remote branch per cui il comando completo da eseguire sarà (seguendo sempre l'esempio del branch lab-1234):
+```bash
+git push -u origin lab-1234
+``` 
+
+## Scaricare gli aggiornamenti degli altri 🔽
+
+Se avete già fatto il *checkout* di un branch e qualcun altro l'ha modificato non vedrete in automatico i cambiamenti di github, avrete bisogno di scaricarli manualmente!
+
+Il comando per allineare la repository github con la vostra codebase locale è:
+
+```bash
+git pull
+``` 
+
+**NOTA:** Per poter fare il pull è necessario aver committato tutto il codice locale, altrimenti il comando fallirà. 
+
+
+### Regole da rispettare per non incappare in scomodi problemi:
+
+1. PRIMA di iniziare a lavorare su un laboratorio fai *git pull*
+2. DOPO aver finito una sessione di scrittura di codice, salva committa e pusha il codice, anche se è sbagliato e/o incompleto.
+
+Ricordate che le commit non si pagano! Più teniamo allineate la repository locale con la repository su github, meglio è! 
+
+
+## 💣 Have Fun! 💣
+
