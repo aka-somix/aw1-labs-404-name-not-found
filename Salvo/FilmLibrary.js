@@ -1,5 +1,6 @@
 'use strict';
 const dayjs = require('dayjs');
+const Database = require('sqlite3').Database
 
 class Film {
   constructor(id, title, isFav = false, date, rating) {
@@ -16,6 +17,23 @@ class Film {
 class FilmLibrary {
 
   filmCollection = {};
+
+  async getAllFilmsFromDB() {
+    return new Promise((resolve, reject) => {
+      const db = new Database('./data/films.db', (err) => { if (err) throw err; });
+      try {
+        db.all("SELECT * FROM films", [], (err, rows) => {
+          // Error handling
+          if (err) { return reject(err) }
+          const films = rows.map((row) => new Film(row.id, row.title, row.favorite, row.watchDate, row.rating));
+          return resolve(films)
+        });
+      }
+      finally {
+        db.close();
+      }
+    });
+  }
 
   addNewFilm(film) {
     this.filmCollection[film.id] = film

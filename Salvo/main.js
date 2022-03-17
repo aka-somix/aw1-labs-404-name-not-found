@@ -11,7 +11,9 @@ const library = new FilmLibrary()
 library.addNewFilm(film1);
 library.addNewFilm(film2);
 library.addNewFilm(film3);
+(async () => {
+  const films = await library.getAllFilmsFromDB();
+  console.log(films);
+})()
 
-console.info(library.getRated())
-
-console.info(library.getFilmList());
+console.log("ciao amanda");
