@@ -1,11 +1,14 @@
 'use strict';
+const dayjs = require('dayjs');
 
 class Film {
   constructor(id, title, isFav = false, date, rating) {
     this.id = id;
     this.title = title;
     this.isFav = isFav;
-    this.date = date;
+    if (date) {
+      this.date = dayjs(date).format('YYYY-MM-DD');
+    }
     this.rating = rating;
   }
 }
